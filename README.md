@@ -2,7 +2,7 @@
 
 A simple logo classifier developed using Maixduino framework and PlatfomIO, to run on K210 MCU on Sipeed's Maix dev board.
 
-## Demo
+## Demo video
 Click the thumbnail
 
 [![Demo video thumbnail](https://img.youtube.com/vi/GvPS3iD2f5A/hqdefault.jpg)](https://www.youtube.com/watch?v=GvPS3iD2f5A)
@@ -15,9 +15,11 @@ Click the thumbnail
 ## Train your model
 * Install Tensorflow, Keras, and other stuffs. RTFM.
 * Take a look at [`training/mbnet_keras.py`](https://github.com/andriyadi/Maix-LogoClassifier/blob/master/training/mbnet_keras.py) file. Adjust the constants, and run it.
-* Convert the generated `h5` model file by running `training/convert.sh` script with the h5 model file as parameter
+* Convert the generated `h5` model file by running `training/convert.sh` script with the h5 model file as parameter. Eg. `./convert.sh logoclassifier.h5`
 * Copy the generated kmodel file to `src`
+* Adjust the labels on `src/names.cpp` file
 
+(More complete steps will be coming soon)
 
 ## Credit
 * Some code and steps are inspired by this [useful tutorial](https://www.instructables.com/id/Transfer-Learning-With-Sipeed-MaiX-and-Arduino-IDE/). Thanks for your support @AIWintermuteAI 
