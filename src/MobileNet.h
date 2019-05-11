@@ -12,10 +12,10 @@
 #include <SD.h>
 #include <Maix_KPU.h>
 
-#define KMODEL_SIZE (4220 * 1024)
-#define USING_STATISTICS 0
-#define STATISTICS_NUM 3
-#define LABEL_TEXT_SIZE 2
+#define KMODEL_SIZE         (4220 * 1024) //not used for now
+#define USING_STATISTICS    0   //to use stats algo, for better result filtering
+#define STATISTICS_NUM      3
+#define LABEL_TEXT_SIZE     2   //2x font size
 
 typedef struct
 {
@@ -33,6 +33,9 @@ public:
     int begin();
     int beginWithModelName(const char *kmodel_name, float threshold = 0.5f);
     int beginWithModelData(uint8_t *model_data, float threshold = 0.5f);
+
+    // Set to 0 or 2 for landscape, 1 or 3 for portrait on LCD. Beware, portrait means wrong camera rotation. 
+    // It seems not possible to rotate the camera image programmatically. 
     void setScreenRotation(uint8_t rotation) {
         _rotation = rotation;
     }

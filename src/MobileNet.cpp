@@ -32,7 +32,8 @@ MobileNet::~MobileNet()
         free(_modelData);
 }
 
-int MobileNet::begin() {
+int MobileNet::begin() 
+{
     if (!_camera.begin())
         return -1;
     if (!_lcd.begin(15000000, BG_COLOR))
@@ -43,8 +44,8 @@ int MobileNet::begin() {
     _lcd.setTextColor(COLOR_WHITE);
     _lcd.setRotation(_rotation);
 
-    printCenterOnLCD(_lcd, MSG_LOADING, 2);
-    delay(500);
+    printCenterOnLCD(_lcd, MSG_LOADING, LABEL_TEXT_SIZE);
+    delay(500); //So, I can see some message, not really needed
 
     return 0;
 }
@@ -78,7 +79,7 @@ int MobileNet::beginWithModelName(const char *kmodel_name, float threshold)
 
     if (!SD.begin())
     {
-        printCenterOnLCD(_lcd, MSG_NO_SD, 2);
+        printCenterOnLCD(_lcd, MSG_NO_SD, LABEL_TEXT_SIZE);
         return -3;
     }
 
@@ -90,7 +91,7 @@ int MobileNet::beginWithModelName(const char *kmodel_name, float threshold)
     _modelData = (uint8_t *)malloc(fSize);
     if (!_modelData)
     {
-        printCenterOnLCD(_lcd, MSG_NO_MEM, 2);
+        printCenterOnLCD(_lcd, MSG_NO_MEM, LABEL_TEXT_SIZE);
         return ENOMEM;
     }
     long retSize = myFile.read(_modelData, fSize);
@@ -113,7 +114,8 @@ int MobileNet::beginWithModelName(const char *kmodel_name, float threshold)
     return 0;
 }
 
-size_t MobileNet::printCenterOnLCD(Sipeed_ST7789 &lcd_, const char *msg, uint8_t textSize) {
+size_t MobileNet::printCenterOnLCD(Sipeed_ST7789 &lcd_, const char *msg, uint8_t textSize) 
+{
     lcd_.setCursor((lcd_.width() - (6 * textSize * strlen(msg))) / 2, (lcd_.height() - (8*textSize)) / 2);
     return lcd_.print(msg);
 }
@@ -134,8 +136,10 @@ int MobileNet::detect()
     {
         return -2;
     }
+
     while (!_kpu.isForwardOk())
         ;
+
     if (_kpu.getResult((uint8_t **)&_kpuResult, &_labelCount) != 0)
     {
         return -3;
