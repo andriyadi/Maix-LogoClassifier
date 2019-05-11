@@ -68,12 +68,11 @@ validation_datagen = ImageDataGenerator(preprocessing_function=preprocess_input)
 #                                         rotation_range=45,
 #                                         zoom_range=[0.9, 1.2],
 #                                         shear_range=0.1,)
-validation_generator = validation_datagen.flow_from_directory(
-	VALIDATION_DIR,
-	target_size=(IMAGE_WIDTH,IMAGE_HEIGHT),
-    color_mode='rgb',
-    batch_size=5,
-	class_mode='categorical'
+validation_generator = validation_datagen.flow_from_directory( 	VALIDATION_DIR,
+								target_size=(IMAGE_WIDTH,IMAGE_HEIGHT),
+    								color_mode='rgb',
+    								batch_size=5,
+								class_mode='categorical'
 )
 
 model.summary()
