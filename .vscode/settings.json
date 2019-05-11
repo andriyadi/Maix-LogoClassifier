@@ -1,0 +1,13 @@
+{
+    "terminal.integrated.env.osx": {
+        "PATH": "/Users/andri/.platformio/penv/bin:/Users/andri/.platformio/penv:/opt/intel//openvino_2019.1.133/deployment_tools/model_optimizer:/Users/andri/.jenv/shims:/Users/andri/.jenv/bin:/Users/andri/Projects/gradle/gradle-2.2.1/bin:/Users/andri/.nvm/versions/node/v11.5.0/bin:/usr/local/narwhal/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Developer/usr/bin:/Users/andri/Projects/esp32/esp-idf/xtensa-esp32-elf/bin:/Users/andri/Projects/esp32/esp-idf/esp32ulp-elf-binutils/bin/:/Users/andri/.mos/bin:/Volumes/Macintosh_Data/Android/sdk/platform-tools:/Volumes/Macintosh_Data/Android/sdk/tools:/Users/andri/Projects/Sipeed/Maix/toolchain/kendryte/bin",
+        "PLATFORMIO_CALLER": "vscode"
+    },
+    "files.associations": {
+        "*.cpp": "cpp",
+        "dvp.h": "c",
+        "ov2640.h": "c",
+        "plic.h": "c",
+        "stdio.h": "c"
+    }
+}
