@@ -1,13 +1,12 @@
 #include <Arduino.h>
 
-#define PASSTHROUGH 0
+#define PASSTHROUGH 0 //Set to 1 just to test camera stream displayed on LCD, and check the UI
 
 #ifdef __cplusplus
 extern "C"
 {
 #endif
 #if !PASSTHROUGH
-// #include "kpu.h"
 #define INCBIN_STYLE INCBIN_STYLE_SNAKE
 #define INCBIN_PREFIX
 #include "incbin.h"
@@ -22,8 +21,9 @@ INCBIN(model, "logoclassifier.kmodel");
 #endif
 
 // Should be the same as image size during training
-#define IMAGE_WIDTH     224
-#define IMAGE_HEIGHT    224
+#define IMAGE_WIDTH               224
+#define IMAGE_HEIGHT              224
+#define VALID_CLASSIFY_THRESHOLD  0.72f //Change this depends on how confidence you are :)
 
 #include <Sipeed_OV2640.h>
 #include <Sipeed_ST7789.h>
@@ -53,7 +53,7 @@ void setup()
 #if PASSTHROUGH
     int ret = mbnet.begin();
 #else
-    int ret = mbnet.beginWithModelData(model_data, 0.72f);
+    int ret = mbnet.beginWithModelData(model_data, VALID_CLASSIFY_THRESHOLD);
 #endif
     if(ret != 0)
     {
@@ -72,7 +72,6 @@ void loop()
 #endif
     }
     mbnet.show();
-
 
 
     // Just for the demo on my video
